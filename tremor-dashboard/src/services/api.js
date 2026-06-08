@@ -128,7 +128,18 @@ export async function fetchTickets() {
   })
 }
 
+async function warmup(retries = 5, delay = 5000) {
+  for (let i = 0; i < retries; i++) {
+    try {
+      const res = await fetch(`${API_BASE}/health`, { signal: AbortSignal.timeout(10000) })
+      if (res.ok) return
+    } catch {}
+    await new Promise((r) => setTimeout(r, delay))
+  }
+}
+
 export async function fetchAllDashboardData() {
+  await warmup()
   await login('pablo', 'pablo')
   const [kpiData, ventasMensuales, categoriasSupermercado, tickets] = await Promise.all([
     fetchKpis(),

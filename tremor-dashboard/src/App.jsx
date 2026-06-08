@@ -62,18 +62,25 @@ export default function App() {
 
         <div className="p-4 lg:p-6 space-y-6">
           {loading && (
-            <div className="flex items-center justify-center py-20">
+            <div className="flex flex-col items-center justify-center py-20 gap-2">
               <Loader2 className="w-8 h-8 text-blue-600 animate-spin" />
-              <span className="ml-3 text-gray-500">Cargando datos...</span>
+              <span className="text-gray-500">Conectando con el servidor...</span>
+              <span className="text-gray-400 text-xs">(puede tardar hasta 30s en Render free)</span>
             </div>
           )}
 
           {error && (
-            <div className="flex items-center justify-center py-20">
+            <div className="flex flex-col items-center justify-center py-20 gap-4">
               <div className="bg-red-50 border border-red-200 rounded-lg px-6 py-4 flex items-center gap-3">
                 <AlertCircle className="w-5 h-5 text-red-500" />
                 <span className="text-red-700">Error al cargar datos: {error}</span>
               </div>
+              <button
+                onClick={() => { setLoading(true); setError(null); fetchAllDashboardData().then(setData).catch((err) => setError(err.message)).finally(() => setLoading(false)) }}
+                className="px-4 py-2 text-sm font-medium text-blue-700 bg-blue-50 border border-blue-200 rounded-lg hover:bg-blue-100 transition-colors"
+              >
+                Reintentar
+              </button>
             </div>
           )}
 
