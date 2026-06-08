@@ -48,9 +48,8 @@ def extraer_texto_pdf(file_bytes):
 def procesar_ticket_con_ia(texto):
     """Envía el texto a Llama 3 usando la API Key hardcodeada."""
     
-    # Comprobación de seguridad por si se te olvida ponerla
-    if GROQ_API_KEY == "PON_TU_API_KEY_DE_GROQ_AQUI":
-        st.error("⚠️ Por favor, pon tu API Key en la variable GROQ_API_KEY dentro del código.")
+    if not GROQ_API_KEY:
+        st.error("⚠️ GROQ_API_KEY no definida. Añádela al archivo .env")
         return None
 
     client = Groq(api_key=GROQ_API_KEY)
