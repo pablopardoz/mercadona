@@ -74,7 +74,7 @@ echo ""
 
 # ── Crear ticket ──────────────────────────────────────────────
 echo "── 7. POST /api/tickets/ (crear ticket) ───────────────────"
-curl -s -X POST "$BASE/api/tickets/" \
+CREATED_RESP=$(curl -s -X POST "$BASE/api/tickets/" \
   -H "Authorization: Bearer $TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -87,7 +87,9 @@ curl -s -X POST "$BASE/api/tickets/" \
       {"nombre_normalizado": "Pan de molde", "cantidad": 1, "precio_unitario": 2.20, "categoria": "Panadería", "subcategoria": "Pan"},
       {"nombre_normalizado": "Manzanas Golden", "cantidad": 1.5, "precio_unitario": 2.50, "categoria": "Frutas y Verduras", "subcategoria": "Frutas"}
     ]
-  }' | python3 -m json.tool
+  }')
+echo "$CREATED_RESP" | python3 -m json.tool
+CREATED_HASH=$(echo "$CREATED_RESP" | python3 -c "import sys,json; print(json.load(sys.stdin).get('ticket_hash',''))" 2>/dev/null || echo "")
 echo ""
 
 # ── Stats totals ──────────────────────────────────────────────
@@ -97,9 +99,10 @@ curl -s "$BASE/api/stats/totals" -H "Authorization: Bearer $TOKEN" | \
 import sys,json
 d=json.load(sys.stdin)
 r=d['resumen']
-print(f'Total global: {r[\"total_global\"]}€')
+total = float(r['total_global'])
+print(f'Total global: {total}€')
 print(f'Número tickets: {r[\"num_tickets\"]}')
-print(f'Media por ticket: {r[\"total_global\"]/r[\"num_tickets\"]:.2f}€')
+print(f'Media por ticket: {total/r[\"num_tickets\"]:.2f}€')
 print(f'Meses con gasto: {len(d[\"por_mes\"])}')
 for m in d['por_mes']:
     print(f'  · {m[\"mes\"]}: {m[\"total\"]}€ ({m[\"num_tickets\"]} tickets)')
@@ -143,10 +146,10 @@ echo ""
 
 # ── Eliminar el ticket creado ─────────────────────────────────
 echo "── 11. DELETE /api/tickets/<hash> (limpieza) ──────────────"
-NEW_HASH=$(curl -s "$BASE/api/tickets/" -H "Authorization: Bearer $TOKEN" | \
-  python3 -c "import sys,json; d=json.load(sys.stdin); print(d['tickets'][0]['ticket_hash'])" 2>/dev/null || echo "")
-if [ -n "$NEW_HASH" ]; then
-  curl -s -X DELETE "$BASE/api/tickets/$NEW_HASH" -H "Authorization: Bearer $TOKEN" | python3 -m json.tool
+if [ -n "$CREATED_HASH" ]; then
+  curl -s -X DELETE "$BASE/api/tickets/$CREATED_HASH" -H "Authorization: Bearer $TOKEN" | python3 -m json.tool
+else
+  echo "  (no se pudo obtener el hash para limpiar)"
 fi
 echo ""
 

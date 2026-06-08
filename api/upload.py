@@ -1,5 +1,6 @@
 import json
 import hashlib
+import logging
 from flask import Blueprint, request, jsonify, g
 from decorators import jwt_required
 from database import create_ticket_with_hash, get_ticket_detail
@@ -53,26 +54,37 @@ def upload_ticket():
     if not Config.GEMINI_API_KEY:
         return jsonify({'error': 'GEMINI_API_KEY no configurada. Crea un .env con GEMINI_API_KEY=...'}), 500
 
-    try:
-        from google import genai
-        from google.genai import types
+    MODELS_FALLBACK = ['gemini-2.5-flash', 'gemini-2.0-flash', 'gemini-1.5-flash']
 
-        client = genai.Client(api_key=Config.GEMINI_API_KEY)
-        response = client.models.generate_content(
-            model='gemini-2.5-flash',
-            contents=[
-                types.Part.from_bytes(data=pdf_bytes, mime_type='application/pdf'),
-                PROMPT_IA,
-            ],
-            config=types.GenerateContentConfig(
-                response_mime_type="application/json",
-                temperature=0.1,
-            ),
-        )
-        ticket_data = json.loads(response.text)
+    from google import genai
+    from google.genai import types
 
-    except Exception as e:
-        return jsonify({'error': f'Error al procesar el PDF con IA: {str(e)}'}), 500
+    client = genai.Client(api_key=Config.GEMINI_API_KEY)
+    last_error = None
+    ticket_data = None
+
+    for model_name in MODELS_FALLBACK:
+        try:
+            response = client.models.generate_content(
+                model=model_name,
+                contents=[
+                    types.Part.from_bytes(data=pdf_bytes, mime_type='application/pdf'),
+                    PROMPT_IA,
+                ],
+                config=types.GenerateContentConfig(
+                    response_mime_type="application/json",
+                    temperature=0.1,
+                ),
+            )
+            ticket_data = json.loads(response.text)
+            if ticket_data:
+                break
+        except Exception as e:
+            last_error = e
+            logging.warning("Modelo %s falló: %s", model_name, e)
+
+    if ticket_data is None:
+        return jsonify({'error': f'Error al procesar el PDF con IA. Intentados: {MODELS_FALLBACK}. Último error: {last_error}'}), 500
 
     lineas = []
     for p in ticket_data.get('productos', []):

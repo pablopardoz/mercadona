@@ -1,7 +1,9 @@
 import os
 import sys
+import logging
+import traceback
 from dotenv import load_dotenv
-from flask import Flask
+from flask import Flask, jsonify
 from flask_cors import CORS
 from config import Config
 from database import init_pool
@@ -12,6 +14,13 @@ load_dotenv(dotenv_path)
 print("Inicializando base de datos...")
 init_pool()
 print("Base de datos lista.")
+
+
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s [%(levelname)s] %(message)s',
+    stream=sys.stdout,
+)
 
 
 def create_app():
@@ -32,6 +41,16 @@ def create_app():
     app.register_blueprint(kpis_bp)
     app.register_blueprint(upload_bp)
     app.register_blueprint(supermarkets_bp)
+
+    @app.errorhandler(500)
+    def handle_500(e):
+        logging.error("Error 500 interno:\n%s", traceback.format_exc())
+        return jsonify({'error': 'Error interno del servidor', 'detalle': str(e)}), 500
+
+    @app.errorhandler(Exception)
+    def handle_exception(e):
+        logging.error("Excepción no controlada:\n%s", traceback.format_exc())
+        return jsonify({'error': 'Error interno del servidor', 'detalle': str(e)}), 500
 
     @app.route('/api/health')
     def health():
