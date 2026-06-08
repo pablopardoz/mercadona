@@ -71,26 +71,28 @@ def _init_db(conn):
         CREATE INDEX IF NOT EXISTS idx_lineas_ticket_hash ON lineas_ticket (ticket_hash)
     """)
 
-    # Aumentar timeout para migraciones (Supabase free tiene 30s)
-    cur.execute("SET statement_timeout = '120s'")
-
-    # Migraciones para tablas existentes (seguro contra CREATE IF NOT EXISTS)
-    for col, col_type in [('user_id', 'INTEGER REFERENCES users(id)'),
-                          ('hora', 'VARCHAR')]:
+    # Migraciones para tablas existentes — columnas sin FK (instantáneo)
+    for col, col_type in [('user_id', 'INTEGER'),
+                          ('hora', 'VARCHAR'),
+                          ('supermarket_id', 'INTEGER')]:
         cur.execute(f"""
             ALTER TABLE tickets ADD COLUMN IF NOT EXISTS {col} {col_type}
         """)
-    # supermarket_id sin FK primero, luego la constraint (evita timeout en tablas grandes)
+
+    # FK constraints con NOT VALID (no revisa filas existentes = instantáneo)
     cur.execute("""
-        ALTER TABLE tickets ADD COLUMN IF NOT EXISTS supermarket_id INTEGER
+        DO $$ BEGIN
+            IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'fk_tickets_user')
+            THEN ALTER TABLE tickets ADD CONSTRAINT fk_tickets_user
+                 FOREIGN KEY (user_id) REFERENCES users(id) NOT VALID;
+            END IF;
+        END $$;
     """)
     cur.execute("""
         DO $$ BEGIN
-            IF NOT EXISTS (
-                SELECT 1 FROM pg_constraint WHERE conname = 'fk_tickets_supermarket'
-            ) THEN
-                ALTER TABLE tickets ADD CONSTRAINT fk_tickets_supermarket
-                    FOREIGN KEY (supermarket_id) REFERENCES supermarkets(id);
+            IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'fk_tickets_supermarket')
+            THEN ALTER TABLE tickets ADD CONSTRAINT fk_tickets_supermarket
+                 FOREIGN KEY (supermarket_id) REFERENCES supermarkets(id) NOT VALID;
             END IF;
         END $$;
     """)
