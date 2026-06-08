@@ -9,6 +9,10 @@ from database import get_conn
 dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
+print("Inicializando base de datos...")
+get_conn()
+print("Base de datos lista.")
+
 
 def create_app():
     app = Flask(__name__)
@@ -36,11 +40,7 @@ def create_app():
     return app
 
 
-if __name__ == '__main__':
-    # Inicializar DB antes de arrancar
-    print("Inicializando base de datos...")
-    get_conn()
-    print("Base de datos lista.")
+app = create_app()
 
-    app = create_app()
+if __name__ == '__main__':
     app.run(debug=False, host='0.0.0.0', port=5000)
