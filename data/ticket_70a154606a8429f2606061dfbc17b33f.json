@@ -1,0 +1,215 @@
+{
+  "supermercado": "Mercadona",
+  "fecha": "2026-05-19",
+  "hora": "16:06",
+  "total_gasto": 52.73,
+  "productos": [
+    {
+      "nombre_original": "FRAMBUESA",
+      "nombre_normalizado": "Frambuesa",
+      "cantidad": 1,
+      "precio_unitario": 2.95,
+      "precio_total": 2.95,
+      "categoria": "Frutas y Verduras",
+      "subcategoria": "Frutas"
+    },
+    {
+      "nombre_original": "MUESLI C/CHOCOLATE",
+      "nombre_normalizado": "Muesli con chocolate",
+      "cantidad": 1,
+      "precio_unitario": 2.35,
+      "precio_total": 2.35,
+      "categoria": "Despensa y Ultramarinos",
+      "subcategoria": "Cereales"
+    },
+    {
+      "nombre_original": "BÍFIDUS 0%0% PERA",
+      "nombre_normalizado": "Bífidus 0% pera",
+      "cantidad": 1,
+      "precio_unitario": 1.3,
+      "precio_total": 1.3,
+      "categoria": "Lácteos y Huevos",
+      "subcategoria": "Yogures"
+    },
+    {
+      "nombre_original": "BOLSA RAFIA",
+      "nombre_normalizado": "Bolsa de rafia",
+      "cantidad": 1,
+      "precio_unitario": 0.65,
+      "precio_total": 0.65,
+      "categoria": "Otros",
+      "subcategoria": "Bolsas"
+    },
+    {
+      "nombre_original": "GRIEGO NATURAL P-6",
+      "nombre_normalizado": "Yogur griego natural pack 6",
+      "cantidad": 1,
+      "precio_unitario": 1.45,
+      "precio_total": 1.45,
+      "categoria": "Lácteos y Huevos",
+      "subcategoria": "Yogures"
+    },
+    {
+      "nombre_original": "FTE SALMON SALVAJE",
+      "nombre_normalizado": "Filete de salmón salvaje",
+      "cantidad": 1,
+      "precio_unitario": 3.44,
+      "precio_total": 3.44,
+      "categoria": "Pescadería",
+      "subcategoria": "Pescado fresco"
+    },
+    {
+      "nombre_original": "HELADO STRACCIATELLA",
+      "nombre_normalizado": "Helado stracciatella",
+      "cantidad": 1,
+      "precio_unitario": 3.25,
+      "precio_total": 3.25,
+      "categoria": "Despensa y Ultramarinos",
+      "subcategoria": "Helados"
+    },
+    {
+      "nombre_original": "BEBIDA COCO",
+      "nombre_normalizado": "Bebida de coco",
+      "cantidad": 1,
+      "precio_unitario": 1.6,
+      "precio_total": 1.6,
+      "categoria": "Bebidas",
+      "subcategoria": "Bebidas vegetales"
+    },
+    {
+      "nombre_original": "ESPINACA BABY",
+      "nombre_normalizado": "Espinaca baby",
+      "cantidad": 1,
+      "precio_unitario": 1.15,
+      "precio_total": 1.15,
+      "categoria": "Frutas y Verduras",
+      "subcategoria": "Verduras"
+    },
+    {
+      "nombre_original": "CACHOPO TERNERA S/G",
+      "nombre_normalizado": "Cachopo de ternera sin gluten",
+      "cantidad": 1,
+      "precio_unitario": 5.5,
+      "precio_total": 5.5,
+      "categoria": "Carnicería y Aves",
+      "subcategoria": "Ternera"
+    },
+    {
+      "nombre_original": "MORCILLA CEBOLLA FRE",
+      "nombre_normalizado": "Morcilla de cebolla fresca",
+      "cantidad": 1,
+      "precio_unitario": 1.93,
+      "precio_total": 1.93,
+      "categoria": "Carnicería y Aves",
+      "subcategoria": "Embutidos"
+    },
+    {
+      "nombre_original": "ZANAHORIA 500 G",
+      "nombre_normalizado": "Zanahoria 500g",
+      "cantidad": 1,
+      "precio_unitario": 0.8,
+      "precio_total": 0.8,
+      "categoria": "Frutas y Verduras",
+      "subcategoria": "Verduras"
+    },
+    {
+      "nombre_original": "T.CHERRY PERA NEGRO",
+      "nombre_normalizado": "Tomate cherry pera negro",
+      "cantidad": 1,
+      "precio_unitario": 1.8,
+      "precio_total": 1.8,
+      "categoria": "Frutas y Verduras",
+      "subcategoria": "Verduras"
+    },
+    {
+      "nombre_original": "MIX FRUTOS ROJOS",
+      "nombre_normalizado": "Mix de frutos rojos",
+      "cantidad": 1,
+      "precio_unitario": 1.9,
+      "precio_total": 1.9,
+      "categoria": "Frutas y Verduras",
+      "subcategoria": "Frutas"
+    },
+    {
+      "nombre_original": "BARRITA CACAHUETE",
+      "nombre_normalizado": "Barrita de cacahuete",
+      "cantidad": 1,
+      "precio_unitario": 3.3,
+      "precio_total": 3.3,
+      "categoria": "Despensa y Ultramarinos",
+      "subcategoria": "Snacks"
+    },
+    {
+      "nombre_original": "SARDINILLAS ESCABECH",
+      "nombre_normalizado": "Sardinillas en escabeche",
+      "cantidad": 1,
+      "precio_unitario": 1.95,
+      "precio_total": 1.95,
+      "categoria": "Despensa y Ultramarinos",
+      "subcategoria": "Conservas de pescado"
+    },
+    {
+      "nombre_original": "CEBOLLA TIERNA",
+      "nombre_normalizado": "Cebolla tierna",
+      "cantidad": 1,
+      "precio_unitario": 1.25,
+      "precio_total": 1.25,
+      "categoria": "Frutas y Verduras",
+      "subcategoria": "Verduras"
+    },
+    {
+      "nombre_original": "CHAPATA CRISTAL 4UDS",
+      "nombre_normalizado": "Chapata cristal 4 unidades",
+      "cantidad": 1,
+      "precio_unitario": 1.3,
+      "precio_total": 1.3,
+      "categoria": "Panadería y Pastelería",
+      "subcategoria": "Pan"
+    },
+    {
+      "nombre_original": "SALMÓN AHUMADO",
+      "nombre_normalizado": "Salmón ahumado",
+      "cantidad": 1,
+      "precio_unitario": 3.85,
+      "precio_total": 3.85,
+      "categoria": "Pescadería",
+      "subcategoria": "Pescado ahumado"
+    },
+    {
+      "nombre_original": "ALBARICOQUE",
+      "nombre_normalizado": "Albaricoque",
+      "cantidad": 1,
+      "precio_unitario": 2.58,
+      "precio_total": 2.58,
+      "categoria": "Frutas y Verduras",
+      "subcategoria": "Frutas"
+    },
+    {
+      "nombre_original": "CALABAZA TROZOS",
+      "nombre_normalizado": "Calabaza en trozos",
+      "cantidad": 1,
+      "precio_unitario": 2.07,
+      "precio_total": 2.07,
+      "categoria": "Frutas y Verduras",
+      "subcategoria": "Verduras"
+    },
+    {
+      "nombre_original": "RULITO CABRA",
+      "nombre_normalizado": "Rulo de cabra",
+      "cantidad": 1,
+      "precio_unitario": 2.65,
+      "precio_total": 2.65,
+      "categoria": "Lácteos y Huevos",
+      "subcategoria": "Queso"
+    },
+    {
+      "nombre_original": "Q. TIERNO CORTADO",
+      "nombre_normalizado": "Queso tierno cortado",
+      "cantidad": 1,
+      "precio_unitario": 3.71,
+      "precio_total": 3.71,
+      "categoria": "Lácteos y Huevos",
+      "subcategoria": "Queso"
+    }
+  ]
+}

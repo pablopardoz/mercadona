@@ -1,0 +1,368 @@
+{
+  "supermercado": "Mercadona",
+  "fecha": "2026-06-03",
+  "hora": "18:40",
+  "total_gasto": 84.98,
+  "productos": [
+    {
+      "nombre_original": "1 PAN DE PUEBLO",
+      "nombre_normalizado": "Pan de pueblo",
+      "cantidad": 1,
+      "precio_unitario": 1.6,
+      "precio_total": 1.6,
+      "categoria": "Panadería y Pastelería",
+      "subcategoria": "Pan"
+    },
+    {
+      "nombre_original": "1 BEBIDA AVENA CALCIO",
+      "nombre_normalizado": "Bebida de avena con calcio",
+      "cantidad": 1,
+      "precio_unitario": 1.2,
+      "precio_total": 1.2,
+      "categoria": "Bebidas",
+      "subcategoria": "Bebida vegetal"
+    },
+    {
+      "nombre_original": "1 BEBIDA COCO",
+      "nombre_normalizado": "Bebida de coco",
+      "cantidad": 1,
+      "precio_unitario": 1.6,
+      "precio_total": 1.6,
+      "categoria": "Bebidas",
+      "subcategoria": "Bebida vegetal"
+    },
+    {
+      "nombre_original": "1 LECHE DESN",
+      "nombre_normalizado": "Leche desnatada",
+      "cantidad": 1,
+      "precio_unitario": 0.82,
+      "precio_total": 0.82,
+      "categoria": "Lácteos y Huevos",
+      "subcategoria": "Leche"
+    },
+    {
+      "nombre_original": "1 LENTEJA COCIDA",
+      "nombre_normalizado": "Lenteja cocida",
+      "cantidad": 1,
+      "precio_unitario": 0.9,
+      "precio_total": 0.9,
+      "categoria": "Despensa y Ultramarinos",
+      "subcategoria": "Legumbres cocidas"
+    },
+    {
+      "nombre_original": "1 CUAJADA",
+      "nombre_normalizado": "Cuajada",
+      "cantidad": 1,
+      "precio_unitario": 1.2,
+      "precio_total": 1.2,
+      "categoria": "Lácteos y Huevos",
+      "subcategoria": "Postre lácteo"
+    },
+    {
+      "nombre_original": "1 QUESO RALLADO PIZZA",
+      "nombre_normalizado": "Queso rallado para pizza",
+      "cantidad": 1,
+      "precio_unitario": 1.6,
+      "precio_total": 1.6,
+      "categoria": "Lácteos y Huevos",
+      "subcategoria": "Queso"
+    },
+    {
+      "nombre_original": "1 PICATOSTE AJO",
+      "nombre_normalizado": "Picatostes con ajo",
+      "cantidad": 1,
+      "precio_unitario": 0.8,
+      "precio_total": 0.8,
+      "categoria": "Despensa y Ultramarinos",
+      "subcategoria": "Pan tostado"
+    },
+    {
+      "nombre_original": "1 ACEITE VIRGEN EX",
+      "nombre_normalizado": "Aceite de oliva virgen extra",
+      "cantidad": 1,
+      "precio_unitario": 4.95,
+      "precio_total": 4.95,
+      "categoria": "Despensa y Ultramarinos",
+      "subcategoria": "Aceite"
+    },
+    {
+      "nombre_original": "1 BLUE II SLALOM 6",
+      "nombre_normalizado": "Agua mineral Blue II Slalom 6",
+      "cantidad": 1,
+      "precio_unitario": 3.0,
+      "precio_total": 3.0,
+      "categoria": "Bebidas",
+      "subcategoria": "Agua"
+    },
+    {
+      "nombre_original": "1 TÉ MATCHA",
+      "nombre_normalizado": "Té Matcha",
+      "cantidad": 1,
+      "precio_unitario": 2.9,
+      "precio_total": 2.9,
+      "categoria": "Bebidas",
+      "subcategoria": "Té"
+    },
+    {
+      "nombre_original": "1 FTE SALMON SALVAJE",
+      "nombre_normalizado": "Filete de salmón salvaje",
+      "cantidad": 1,
+      "precio_unitario": 3.59,
+      "precio_total": 3.59,
+      "categoria": "Pescadería",
+      "subcategoria": "Salmón"
+    },
+    {
+      "nombre_original": "1 CROQUETA COCIDO",
+      "nombre_normalizado": "Croquetas de cocido",
+      "cantidad": 1,
+      "precio_unitario": 1.95,
+      "precio_total": 1.95,
+      "categoria": "Despensa y Ultramarinos",
+      "subcategoria": "Platos preparados"
+    },
+    {
+      "nombre_original": "1 PIADINA",
+      "nombre_normalizado": "Piadina",
+      "cantidad": 1,
+      "precio_unitario": 2.2,
+      "precio_total": 2.2,
+      "categoria": "Panadería y Pastelería",
+      "subcategoria": "Pan"
+    },
+    {
+      "nombre_original": "2 NEVAL 8L",
+      "nombre_normalizado": "Agua mineral Neval 8L",
+      "cantidad": 2,
+      "precio_unitario": 0.95,
+      "precio_total": 1.9,
+      "categoria": "Bebidas",
+      "subcategoria": "Agua"
+    },
+    {
+      "nombre_original": "1 ACEITUNA PIMIENTO",
+      "nombre_normalizado": "Aceitunas rellenas de pimiento",
+      "cantidad": 1,
+      "precio_unitario": 1.75,
+      "precio_total": 1.75,
+      "categoria": "Despensa y Ultramarinos",
+      "subcategoria": "Aceitunas"
+    },
+    {
+      "nombre_original": "1 AGUA CON GAS",
+      "nombre_normalizado": "Agua con gas",
+      "cantidad": 1,
+      "precio_unitario": 1.0,
+      "precio_total": 1.0,
+      "categoria": "Bebidas",
+      "subcategoria": "Agua"
+    },
+    {
+      "nombre_original": "1 CEBOLLA TIERNA",
+      "nombre_normalizado": "Cebolla tierna",
+      "cantidad": 1,
+      "precio_unitario": 1.25,
+      "precio_total": 1.25,
+      "categoria": "Frutas y Verduras",
+      "subcategoria": "Verduras"
+    },
+    {
+      "nombre_original": "1 SALMOREJO",
+      "nombre_normalizado": "Salmorejo",
+      "cantidad": 1,
+      "precio_unitario": 2.2,
+      "precio_total": 2.2,
+      "categoria": "Despensa y Ultramarinos",
+      "subcategoria": "Platos preparados"
+    },
+    {
+      "nombre_original": "1 GAZPACHO TRADICIONAL",
+      "nombre_normalizado": "Gazpacho tradicional",
+      "cantidad": 1,
+      "precio_unitario": 1.6,
+      "precio_total": 1.6,
+      "categoria": "Despensa y Ultramarinos",
+      "subcategoria": "Platos preparados"
+    },
+    {
+      "nombre_original": "1 ATUN CLARO NATURAL",
+      "nombre_normalizado": "Atún claro al natural",
+      "cantidad": 1,
+      "precio_unitario": 4.2,
+      "precio_total": 4.2,
+      "categoria": "Despensa y Ultramarinos",
+      "subcategoria": "Conservas"
+    },
+    {
+      "nombre_original": "1 6 HUEVOS CAMPEROS",
+      "nombre_normalizado": "6 Huevos camperos",
+      "cantidad": 1,
+      "precio_unitario": 2.1,
+      "precio_total": 2.1,
+      "categoria": "Lácteos y Huevos",
+      "subcategoria": "Huevos"
+    },
+    {
+      "nombre_original": "1 JAMÓN S. S/ADITIVOS",
+      "nombre_normalizado": "Jamón serrano sin aditivos",
+      "cantidad": 1,
+      "precio_unitario": 2.3,
+      "precio_total": 2.3,
+      "categoria": "Carnicería y Aves",
+      "subcategoria": "Embutidos"
+    },
+    {
+      "nombre_original": "1 T.CHERRY PERA NEGRO",
+      "nombre_normalizado": "Tomate cherry pera negro",
+      "cantidad": 1,
+      "precio_unitario": 1.7,
+      "precio_total": 1.7,
+      "categoria": "Frutas y Verduras",
+      "subcategoria": "Verduras"
+    },
+    {
+      "nombre_original": "1 AGUACATE BANDEJA",
+      "nombre_normalizado": "Aguacate en bandeja",
+      "cantidad": 1,
+      "precio_unitario": 3.19,
+      "precio_total": 3.19,
+      "categoria": "Frutas y Verduras",
+      "subcategoria": "Frutas"
+    },
+    {
+      "nombre_original": "1 BÍFIDUS CREMOSO COCO",
+      "nombre_normalizado": "Bífidus cremoso de coco",
+      "cantidad": 1,
+      "precio_unitario": 1.3,
+      "precio_total": 1.3,
+      "categoria": "Lácteos y Huevos",
+      "subcategoria": "Yogures"
+    },
+    {
+      "nombre_original": "1 TERNERA EXTRATIERNA",
+      "nombre_normalizado": "Ternera extratierna",
+      "cantidad": 1,
+      "precio_unitario": 8.14,
+      "precio_total": 8.14,
+      "categoria": "Carnicería y Aves",
+      "subcategoria": "Ternera"
+    },
+    {
+      "nombre_original": "1 TOPPING",
+      "nombre_normalizado": "Topping",
+      "cantidad": 1,
+      "precio_unitario": 1.85,
+      "precio_total": 1.85,
+      "categoria": "Despensa y Ultramarinos",
+      "subcategoria": "Salsas y condimentos"
+    },
+    {
+      "nombre_original": "1 TOM.RECETA ARTESANA",
+      "nombre_normalizado": "Tomate receta artesana",
+      "cantidad": 1,
+      "precio_unitario": 1.4,
+      "precio_total": 1.4,
+      "categoria": "Despensa y Ultramarinos",
+      "subcategoria": "Salsas y condimentos"
+    },
+    {
+      "nombre_original": "1 ESP VERDE FINO",
+      "nombre_normalizado": "Espárrago verde fino",
+      "cantidad": 1,
+      "precio_unitario": 2.45,
+      "precio_total": 2.45,
+      "categoria": "Frutas y Verduras",
+      "subcategoria": "Verduras"
+    },
+    {
+      "nombre_original": "1 MOZZARELLA FRESCA",
+      "nombre_normalizado": "Mozzarella fresca",
+      "cantidad": 1,
+      "precio_unitario": 0.9,
+      "precio_total": 0.9,
+      "categoria": "Lácteos y Huevos",
+      "subcategoria": "Queso"
+    },
+    {
+      "nombre_original": "1 BANDERILLA GILDA",
+      "nombre_normalizado": "Banderilla Gilda",
+      "cantidad": 1,
+      "precio_unitario": 2.3,
+      "precio_total": 2.3,
+      "categoria": "Despensa y Ultramarinos",
+      "subcategoria": "Aperitivos"
+    },
+    {
+      "nombre_original": "1 ZANAHORIA 500 G",
+      "nombre_normalizado": "Zanahoria 500g",
+      "cantidad": 1,
+      "precio_unitario": 0.8,
+      "precio_total": 0.8,
+      "categoria": "Frutas y Verduras",
+      "subcategoria": "Verduras"
+    },
+    {
+      "nombre_original": "1 ESPINACAS",
+      "nombre_normalizado": "Espinacas",
+      "cantidad": 1,
+      "precio_unitario": 1.3,
+      "precio_total": 1.3,
+      "categoria": "Frutas y Verduras",
+      "subcategoria": "Verduras"
+    },
+    {
+      "nombre_original": "1 FRESÓN",
+      "nombre_normalizado": "Fresón",
+      "cantidad": 1,
+      "precio_unitario": 2.29,
+      "precio_total": 2.29,
+      "categoria": "Frutas y Verduras",
+      "subcategoria": "Frutas"
+    },
+    {
+      "nombre_original": "SEPIA 0,224 kg 15,95 €/kg 3,57",
+      "nombre_normalizado": "Sepia",
+      "cantidad": 0.224,
+      "precio_unitario": 15.95,
+      "precio_total": 3.57,
+      "categoria": "Pescadería",
+      "subcategoria": "Marisco"
+    },
+    {
+      "nombre_original": "1 BROCOLI 0,372 kg 2,60 €/kg 0,97",
+      "nombre_normalizado": "Brócoli",
+      "cantidad": 0.372,
+      "precio_unitario": 2.6,
+      "precio_total": 0.97,
+      "categoria": "Frutas y Verduras",
+      "subcategoria": "Verduras"
+    },
+    {
+      "nombre_original": "1 MELOCOTON 0,626 kg 4,90 €/kg 3,07",
+      "nombre_normalizado": "Melocotón",
+      "cantidad": 0.626,
+      "precio_unitario": 4.9,
+      "precio_total": 3.07,
+      "categoria": "Frutas y Verduras",
+      "subcategoria": "Frutas"
+    },
+    {
+      "nombre_original": "1 BANANA 0,962 kg 1,16 €/kg 1,12",
+      "nombre_normalizado": "Banana",
+      "cantidad": 0.962,
+      "precio_unitario": 1.16,
+      "precio_total": 1.12,
+      "categoria": "Frutas y Verduras",
+      "subcategoria": "Frutas"
+    },
+    {
+      "nombre_original": "1 PATATA 1,062 kg 1,90 €/kg 2,02",
+      "nombre_normalizado": "Patata",
+      "cantidad": 1.062,
+      "precio_unitario": 1.9,
+      "precio_total": 2.02,
+      "categoria": "Frutas y Verduras",
+      "subcategoria": "Verduras"
+    }
+  ]
+}

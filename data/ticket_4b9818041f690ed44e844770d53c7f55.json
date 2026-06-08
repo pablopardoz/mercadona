@@ -1,0 +1,98 @@
+{
+  "supermercado": "Mercadona",
+  "fecha": "2026-05-18",
+  "hora": "20:14",
+  "total_gasto": 17.95,
+  "productos": [
+    {
+      "nombre_original": "PAÑUELO LOCION",
+      "nombre_normalizado": "Pañuelos de loción",
+      "cantidad": 1,
+      "precio_unitario": 1.6,
+      "precio_total": 1.6,
+      "categoria": "Cuidado Personal y Perfumería",
+      "subcategoria": "Pañuelos"
+    },
+    {
+      "nombre_original": "NACHOS",
+      "nombre_normalizado": "Nachos",
+      "cantidad": 1,
+      "precio_unitario": 0.9,
+      "precio_total": 0.9,
+      "categoria": "Despensa y Ultramarinos",
+      "subcategoria": "Snacks"
+    },
+    {
+      "nombre_original": "SNACK PIPAS",
+      "nombre_normalizado": "Snack de pipas",
+      "cantidad": 1,
+      "precio_unitario": 1.32,
+      "precio_total": 1.32,
+      "categoria": "Despensa y Ultramarinos",
+      "subcategoria": "Snacks"
+    },
+    {
+      "nombre_original": "H. CORDERO AL ROMERO",
+      "nombre_normalizado": "Hamburguesa de cordero al romero",
+      "cantidad": 1,
+      "precio_unitario": 3.5,
+      "precio_total": 3.5,
+      "categoria": "Carnicería y Aves",
+      "subcategoria": "Cordero"
+    },
+    {
+      "nombre_original": "TORTILLA PAT C/CEB",
+      "nombre_normalizado": "Tortilla de patatas con cebolla",
+      "cantidad": 1,
+      "precio_unitario": 2.6,
+      "precio_total": 2.6,
+      "categoria": "Despensa y Ultramarinos",
+      "subcategoria": "Platos preparados"
+    },
+    {
+      "nombre_original": "HUMMUS PIMIENTO",
+      "nombre_normalizado": "Hummus de pimiento",
+      "cantidad": 1,
+      "precio_unitario": 1.45,
+      "precio_total": 1.45,
+      "categoria": "Despensa y Ultramarinos",
+      "subcategoria": "Cremas y patés vegetales"
+    },
+    {
+      "nombre_original": "CHAPATA CRISTAL 4UDS",
+      "nombre_normalizado": "Chapata cristal 4 unidades",
+      "cantidad": 1,
+      "precio_unitario": 1.3,
+      "precio_total": 1.3,
+      "categoria": "Panadería y Pastelería",
+      "subcategoria": "Pan"
+    },
+    {
+      "nombre_original": "JAMÓN S. S/ADITIVOS",
+      "nombre_normalizado": "Jamón serrano sin aditivos",
+      "cantidad": 1,
+      "precio_unitario": 2.3,
+      "precio_total": 2.3,
+      "categoria": "Carnicería y Aves",
+      "subcategoria": "Embutidos"
+    },
+    {
+      "nombre_original": "GUACAMOLE 200 G",
+      "nombre_normalizado": "Guacamole 200g",
+      "cantidad": 1,
+      "precio_unitario": 1.8,
+      "precio_total": 1.8,
+      "categoria": "Frutas y Verduras",
+      "subcategoria": "Salsas y cremas vegetales"
+    },
+    {
+      "nombre_original": "TOMATE ROSA",
+      "nombre_normalizado": "Tomate rosa",
+      "cantidad": 0.454,
+      "precio_unitario": 2.6,
+      "precio_total": 1.18,
+      "categoria": "Frutas y Verduras",
+      "subcategoria": "Verduras"
+    }
+  ]
+}

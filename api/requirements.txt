@@ -1,0 +1,8 @@
+flask
+flask-cors
+psycopg2-binary
+pyjwt
+werkzeug
+google-genai
+pydantic
+python-dotenv

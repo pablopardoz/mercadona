@@ -1,0 +1,107 @@
+{
+  "supermercado": "Mercadona",
+  "fecha": "2026-05-16",
+  "hora": "13:51",
+  "total_gasto": 18.62,
+  "productos": [
+    {
+      "nombre_original": "FRESÓN 1 KG.",
+      "nombre_normalizado": "Fresón 1 kg",
+      "cantidad": 1,
+      "precio_unitario": 2.66,
+      "precio_total": 2.66,
+      "categoria": "Frutas y Verduras",
+      "subcategoria": "Frutas"
+    },
+    {
+      "nombre_original": "BAGUETTE",
+      "nombre_normalizado": "Baguette",
+      "cantidad": 2,
+      "precio_unitario": 0.57,
+      "precio_total": 1.14,
+      "categoria": "Panadería y Pastelería",
+      "subcategoria": "Pan"
+    },
+    {
+      "nombre_original": "6 HUEVOS CAMPEROS",
+      "nombre_normalizado": "6 Huevos camperos",
+      "cantidad": 1,
+      "precio_unitario": 2.1,
+      "precio_total": 2.1,
+      "categoria": "Lácteos y Huevos",
+      "subcategoria": "Huevos"
+    },
+    {
+      "nombre_original": "ALLIOLI TARRINA",
+      "nombre_normalizado": "Allioli tarrina",
+      "cantidad": 1,
+      "precio_unitario": 1.1,
+      "precio_total": 1.1,
+      "categoria": "Despensa y Ultramarinos",
+      "subcategoria": "Salsas"
+    },
+    {
+      "nombre_original": "MAYONESA 500ML",
+      "nombre_normalizado": "Mayonesa 500ml",
+      "cantidad": 1,
+      "precio_unitario": 1.3,
+      "precio_total": 1.3,
+      "categoria": "Despensa y Ultramarinos",
+      "subcategoria": "Salsas"
+    },
+    {
+      "nombre_original": "BEBIDA AVELLANAS",
+      "nombre_normalizado": "Bebida de avellanas",
+      "cantidad": 1,
+      "precio_unitario": 1.25,
+      "precio_total": 1.25,
+      "categoria": "Bebidas",
+      "subcategoria": "Bebidas vegetales"
+    },
+    {
+      "nombre_original": "LECHE DESN",
+      "nombre_normalizado": "Leche desnatada",
+      "cantidad": 1,
+      "precio_unitario": 0.82,
+      "precio_total": 0.82,
+      "categoria": "Lácteos y Huevos",
+      "subcategoria": "Leche"
+    },
+    {
+      "nombre_original": "HORCHATA FRESCA",
+      "nombre_normalizado": "Horchata fresca",
+      "cantidad": 1,
+      "precio_unitario": 2.25,
+      "precio_total": 2.25,
+      "categoria": "Bebidas",
+      "subcategoria": "Bebidas refrescantes"
+    },
+    {
+      "nombre_original": "PAN ESPELTA INTEGRAL",
+      "nombre_normalizado": "Pan de espelta integral",
+      "cantidad": 1,
+      "precio_unitario": 1.65,
+      "precio_total": 1.65,
+      "categoria": "Panadería y Pastelería",
+      "subcategoria": "Pan"
+    },
+    {
+      "nombre_original": "MANTEQUILLA PAST.SIN",
+      "nombre_normalizado": "Mantequilla pasteurizada sin sal",
+      "cantidad": 1,
+      "precio_unitario": 2.1,
+      "precio_total": 2.1,
+      "categoria": "Lácteos y Huevos",
+      "subcategoria": "Mantequilla"
+    },
+    {
+      "nombre_original": "FARTONS",
+      "nombre_normalizado": "Fartons",
+      "cantidad": 1,
+      "precio_unitario": 2.25,
+      "precio_total": 2.25,
+      "categoria": "Panadería y Pastelería",
+      "subcategoria": "Bollería"
+    }
+  ]
+}
