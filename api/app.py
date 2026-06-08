@@ -44,9 +44,16 @@ def create_app():
 
     @app.errorhandler(500)
     def handle_500(e):
-        logging.error("Error 500 interno:\n%s", traceback.format_exc())
-        error_msg = str(e.original_exception) if hasattr(e, 'original_exception') else str(e)
-        return jsonify({'error': 'Error interno del servidor', 'detalle': error_msg}), 500
+        try:
+            logging.error("Error 500 interno:\n%s", traceback.format_exc())
+            error_msg = str(e.original_exception) if hasattr(e, 'original_exception') else str(e)
+            return jsonify({'error': 'Error interno del servidor', 'detalle': error_msg}), 500
+        except Exception as handler_err:
+            return jsonify({'error': str(handler_err)}), 500
+
+    @app.errorhandler(Exception)
+    def handle_uncaught(e):
+        return jsonify({'error': str(e)}), 500
 
     @app.route('/api/health')
     def health():
