@@ -6,3 +6,4 @@ werkzeug
 google-genai
 pydantic
 python-dotenv
+gunicorn
