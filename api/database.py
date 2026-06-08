@@ -33,7 +33,7 @@ def get_conn():
         cur = conn.cursor()
         cur.execute("SELECT 1")
         cur.close()
-    except psycopg2.InterfaceError:
+    except (psycopg2.InterfaceError, psycopg2.OperationalError):
         print("Reconectando a la base de datos...")
         close_pool()
         init_pool()
