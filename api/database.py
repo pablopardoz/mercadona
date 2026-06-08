@@ -71,13 +71,29 @@ def _init_db(conn):
         CREATE INDEX IF NOT EXISTS idx_lineas_ticket_hash ON lineas_ticket (ticket_hash)
     """)
 
+    # Aumentar timeout para migraciones (Supabase free tiene 30s)
+    cur.execute("SET statement_timeout = '120s'")
+
     # Migraciones para tablas existentes (seguro contra CREATE IF NOT EXISTS)
     for col, col_type in [('user_id', 'INTEGER REFERENCES users(id)'),
-                          ('hora', 'VARCHAR'),
-                          ('supermarket_id', 'INTEGER REFERENCES supermarkets(id)')]:
+                          ('hora', 'VARCHAR')]:
         cur.execute(f"""
             ALTER TABLE tickets ADD COLUMN IF NOT EXISTS {col} {col_type}
         """)
+    # supermarket_id sin FK primero, luego la constraint (evita timeout en tablas grandes)
+    cur.execute("""
+        ALTER TABLE tickets ADD COLUMN IF NOT EXISTS supermarket_id INTEGER
+    """)
+    cur.execute("""
+        DO $$ BEGIN
+            IF NOT EXISTS (
+                SELECT 1 FROM pg_constraint WHERE conname = 'fk_tickets_supermarket'
+            ) THEN
+                ALTER TABLE tickets ADD CONSTRAINT fk_tickets_supermarket
+                    FOREIGN KEY (supermarket_id) REFERENCES supermarkets(id);
+            END IF;
+        END $$;
+    """)
 
     conn.commit()
     _seed_default_user(conn)
