@@ -28,7 +28,17 @@ def init_pool():
 def get_conn():
     if _pool is None:
         init_pool()
-    return _pool.getconn()
+    conn = _pool.getconn()
+    try:
+        cur = conn.cursor()
+        cur.execute("SELECT 1")
+        cur.close()
+    except psycopg2.InterfaceError:
+        print("Reconectando a la base de datos...")
+        close_pool()
+        init_pool()
+        conn = _pool.getconn()
+    return conn
 
 
 def put_conn(conn):
