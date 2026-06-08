@@ -15,6 +15,12 @@ def get_conn():
         print("DB URL:", Config.SUPABASE_DB_URL)
         _conn = psycopg2.connect(Config.SUPABASE_DB_URL, sslmode='require')
         _init_db(_conn)
+        return _conn
+    try:
+        _conn.cursor().execute("SELECT 1")
+    except psycopg2.InterfaceError:
+        print("Reconectando a la base de datos...")
+        _conn = psycopg2.connect(Config.SUPABASE_DB_URL, sslmode='require')
     return _conn
 
 
