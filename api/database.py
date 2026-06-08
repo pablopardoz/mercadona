@@ -2,55 +2,31 @@ import os
 import hashlib
 import time
 import psycopg2
-from psycopg2.pool import SimpleConnectionPool
 from psycopg2.extras import DictCursor
 from werkzeug.security import generate_password_hash
 from config import Config
 
-_pool = None
 _db_initialized = False
 
 
-def init_pool():
-    global _pool, _db_initialized
-    if _pool is None:
-        print("DB URL:", Config.SUPABASE_DB_URL)
-        _pool = SimpleConnectionPool(1, 10, Config.SUPABASE_DB_URL, sslmode='require')
+def init_db():
+    global _db_initialized
     if not _db_initialized:
-        conn = _pool.getconn()
+        print("DB URL:", Config.SUPABASE_DB_URL)
+        conn = psycopg2.connect(Config.SUPABASE_DB_URL, sslmode='require')
         try:
             _init_db(conn)
             _db_initialized = True
         finally:
-            _pool.putconn(conn)
+            conn.close()
 
 
 def get_conn():
-    if _pool is None:
-        init_pool()
-    conn = _pool.getconn()
-    try:
-        cur = conn.cursor()
-        cur.execute("SELECT 1")
-        cur.close()
-    except (psycopg2.InterfaceError, psycopg2.OperationalError):
-        print("Reconectando a la base de datos...")
-        close_pool()
-        init_pool()
-        conn = _pool.getconn()
-    return conn
+    return psycopg2.connect(Config.SUPABASE_DB_URL, sslmode='require')
 
 
 def put_conn(conn):
-    _pool.putconn(conn)
-
-
-def close_pool():
-    global _pool, _db_initialized
-    if _pool:
-        _pool.closeall()
-        _pool = None
-        _db_initialized = False
+    conn.close()
 
 
 def _init_db(conn):

@@ -6,13 +6,13 @@ from dotenv import load_dotenv
 from flask import Flask, jsonify
 from flask_cors import CORS
 from config import Config
-from database import init_pool
+from database import init_db
 
 dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
 print("Inicializando base de datos...")
-init_pool()
+init_db()
 print("Base de datos lista.")
 
 
