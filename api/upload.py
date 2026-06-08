@@ -64,7 +64,6 @@ def upload_ticket():
         return jsonify({'error': 'GEMINI_API_KEY no configurada. Crea un .env con GEMINI_API_KEY=...'}), 500
 
     MODELS_FALLBACK = ['gemini-2.5-flash', 'gemini-2.0-flash', 'gemini-1.5-flash']
-    GEMINI_TIMEOUT = 60
 
     logging.info("Iniciando procesamiento con Gemini (PDF hash: %s, tamaño: %d bytes)", file_hash, len(pdf_bytes))
 
@@ -76,7 +75,7 @@ def upload_ticket():
     ticket_data = None
 
     for model_name in MODELS_FALLBACK:
-        logging.info("Intentando modelo: %s (timeout=%ds)", model_name, GEMINI_TIMEOUT)
+        logging.info("Intentando modelo: %s", model_name)
         try:
             response = client.models.generate_content(
                 model=model_name,
@@ -88,7 +87,6 @@ def upload_ticket():
                     response_mime_type="application/json",
                     temperature=0.1,
                 ),
-                timeout=GEMINI_TIMEOUT,
             )
             logging.info("Respuesta recibida de %s", model_name)
             ticket_data = json.loads(response.text)
