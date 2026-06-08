@@ -1,4 +1,4 @@
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
+const API_BASE = import.meta.env.VITE_API_URL || 'https://mercadona-w0md.onrender.com/api'
 
 let _token = localStorage.getItem('token')
 
