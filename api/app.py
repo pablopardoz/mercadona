@@ -4,13 +4,13 @@ from dotenv import load_dotenv
 from flask import Flask
 from flask_cors import CORS
 from config import Config
-from database import get_conn
+from database import init_pool
 
 dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
 print("Inicializando base de datos...")
-get_conn()
+init_pool()
 print("Base de datos lista.")
 
 
