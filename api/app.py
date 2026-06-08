@@ -55,6 +55,10 @@ def create_app():
     def handle_uncaught(e):
         return jsonify({'error': str(e)}), 500
 
+    @app.errorhandler(404)
+    def not_found(e):
+        return jsonify({'error': 'Not Found'}), 404
+
     @app.route('/api/health')
     def health():
         return {'status': 'ok'}
