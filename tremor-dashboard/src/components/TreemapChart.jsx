@@ -2,14 +2,18 @@ import { Card, Title, Text } from "@tremor/react"
 import { Treemap, ResponsiveContainer, Tooltip } from "recharts"
 
 const colors = [
-  "#3b82f6",
-  "#10b981",
-  "#f59e0b",
-  "#ef4444",
-  "#8b5cf6",
-  "#ec4899",
-  "#14b8a6",
-  "#f97316",
+  "#2563eb",
+  "#059669",
+  "#d97706",
+  "#dc2626",
+  "#7c3aed",
+  "#db2777",
+  "#0891b2",
+  "#ea580c",
+  "#4f46e5",
+  "#ca8a04",
+  "#16a34a",
+  "#e11d48",
 ]
 
 export default function TreemapChart({ data }) {
@@ -29,7 +33,7 @@ export default function TreemapChart({ data }) {
             dataKey="value"
             aspectRatio={4 / 3}
             stroke="#fff"
-            content={<CustomTreemapContent />}
+            content={<CustomTreemapContent chartColors={colors} />}
           >
             <Tooltip
               content={({ active, payload }) => {
@@ -61,10 +65,8 @@ export default function TreemapChart({ data }) {
   )
 }
 
-function CustomTreemapContent({ root, depth, x, y, width, height, index, payload, colors }) {
-  if (depth > 0) {
-    const pct = ((width * height) / (root.children ? root.children.reduce((a, c) => a + c.width * c.height, 0) : 1)) * 100
-  }
+function CustomTreemapContent({ root, depth, x, y, width, height, index, payload, chartColors }) {
+  const color = payload?.fill || chartColors?.[index % chartColors.length] || "#6366f1"
 
   return (
     <g>
@@ -74,7 +76,7 @@ function CustomTreemapContent({ root, depth, x, y, width, height, index, payload
         width={width}
         height={height}
         style={{
-          fill: payload?.fill || "#3b82f6",
+          fill: color,
           stroke: "#fff",
           strokeWidth: 2,
           cursor: "pointer",
