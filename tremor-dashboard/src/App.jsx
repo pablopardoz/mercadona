@@ -5,6 +5,7 @@ import KpiCards from "./components/KpiCards"
 import TreemapChart from "./components/TreemapChart"
 import MonthlyBarChart from "./components/MonthlyBarChart"
 import TicketsTable from "./components/TicketsTable"
+import ProductosTab from "./components/ProductosTab"
 import { fetchAllDashboardData } from "./services/api"
 
 export default function App() {
@@ -84,15 +85,28 @@ export default function App() {
             </div>
           )}
 
-          {data && (
+          {data && active === "tickets" && (
+            <TicketsTable tickets={data.tickets} />
+          )}
+
+          {data && active === "productos" && (
+            <ProductosTab />
+          )}
+
+          {data && active === "dashboard" && (
             <>
               <KpiCards data={data.kpiData} />
               <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
                 <MonthlyBarChart data={data.ventasMensuales} />
                 <TreemapChart data={data.categoriasSupermercado} />
               </div>
-              <TicketsTable tickets={data.tickets} />
             </>
+          )}
+
+          {data && (active === "informes" || active === "ajustes") && (
+            <div className="flex flex-col items-center justify-center py-20 text-gray-400">
+              <p className="text-lg font-medium">Próximamente</p>
+            </div>
           )}
         </div>
       </main>

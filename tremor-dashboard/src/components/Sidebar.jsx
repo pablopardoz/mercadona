@@ -1,17 +1,17 @@
 import {
-  LayoutDashboard, TrendingUp, Package, FileText, Settings, X, Users,
+  LayoutDashboard, Receipt, Package, FileText, Settings, X, Users,
 } from "lucide-react"
 
 const menuItems = [
   { id: "dashboard", label: "Dashboard", icon: "LayoutDashboard" },
-  { id: "ventas", label: "Ventas", icon: "TrendingUp" },
+  { id: "tickets", label: "Tickets", icon: "Receipt" },
   { id: "productos", label: "Productos", icon: "Package" },
   { id: "informes", label: "Informes", icon: "FileText" },
   { id: "ajustes", label: "Ajustes", icon: "Settings" },
 ]
 
 const iconMap = {
-  LayoutDashboard, TrendingUp, Package, FileText, Settings,
+  LayoutDashboard, Receipt, Package, FileText, Settings,
 }
 
 export default function Sidebar({ active, setActive, open, setOpen }) {

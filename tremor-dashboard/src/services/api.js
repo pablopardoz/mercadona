@@ -138,6 +138,43 @@ async function warmup(retries = 5, delay = 5000) {
   }
 }
 
+export async function fetchProductos() {
+  await new Promise(r => setTimeout(r, 100))
+  const { tickets } = await import('../data/mockData')
+  const map = new Map()
+  tickets.forEach(t => {
+    t.items.forEach(item => {
+      if (!map.has(item.producto)) {
+        map.set(item.producto, { producto: item.producto, categoria: item.categoria, subcategoria: item.subcategoria, veces: 0, ultimaCompra: '' })
+      }
+      const e = map.get(item.producto)
+      e.veces++
+      if (t.fecha > e.ultimaCompra) e.ultimaCompra = t.fecha
+    })
+  })
+  return Array.from(map.values()).sort((a, b) => b.veces - a.veces || a.producto.localeCompare(b.producto))
+}
+
+export async function fetchProductoCompras(productName) {
+  await new Promise(r => setTimeout(r, 100))
+  const { tickets } = await import('../data/mockData')
+  const purchases = []
+  tickets.forEach(t => {
+    t.items.forEach(item => {
+      if (item.producto === productName) {
+        purchases.push({
+          fecha: t.fecha,
+          supermercado: t.supermercado,
+          precioUnitario: item.precioUnitario,
+          cantidad: item.cantidad,
+          precioTotal: item.precioTotal,
+        })
+      }
+    })
+  })
+  return purchases.sort((a, b) => a.fecha.localeCompare(b.fecha))
+}
+
 export async function fetchAllDashboardData() {
   await warmup()
   await login('pablo', 'pablo')
