@@ -34,6 +34,7 @@ def create_app():
     from kpis import bp as kpis_bp
     from upload import bp as upload_bp
     from supermarkets import bp as supermarkets_bp
+    from dashboard import bp as dashboard_bp
 
     app.register_blueprint(auth_bp)
     app.register_blueprint(stats_bp)
@@ -41,6 +42,7 @@ def create_app():
     app.register_blueprint(kpis_bp)
     app.register_blueprint(upload_bp)
     app.register_blueprint(supermarkets_bp)
+    app.register_blueprint(dashboard_bp)
 
     @app.errorhandler(500)
     def handle_500(e):

@@ -465,6 +465,180 @@ def get_kpis(user_id):
         put_conn(conn)
 
 
+# ── Dashboard (single-connection bundle) ────────────────────
+
+def get_dashboard_data(user_id):
+    conn = get_conn()
+    try:
+        cur = conn.cursor()
+
+        # totals
+        cur.execute(
+            """SELECT COUNT(*) AS num_tickets, COALESCE(SUM(total_gasto), 0) AS total_global
+               FROM tickets WHERE user_id = %s""",
+            [user_id],
+        )
+        resumen = cur.fetchone()
+
+        cur.execute(
+            """SELECT TO_CHAR(fecha, 'YYYY-MM') AS mes,
+                      SUM(total_gasto) AS total,
+                      COUNT(*) AS num_tickets
+               FROM tickets WHERE user_id = %s
+               GROUP BY mes ORDER BY mes""",
+            [user_id],
+        )
+        por_mes = cur.fetchall()
+
+        cur.execute(
+            """SELECT TO_CHAR(fecha, 'YYYY') AS anio,
+                      SUM(total_gasto) AS total,
+                      COUNT(*) AS num_tickets
+               FROM tickets WHERE user_id = %s
+               GROUP BY anio ORDER BY anio""",
+            [user_id],
+        )
+        por_anio = cur.fetchall()
+
+        # categories
+        cur.execute(
+            """SELECT l.categoria, SUM(l.precio_total) AS total, COUNT(*) AS num_productos
+               FROM lineas_ticket l
+               JOIN tickets t ON l.ticket_hash = t.ticket_hash
+               WHERE t.user_id = %s
+               GROUP BY l.categoria ORDER BY total DESC""",
+            [user_id],
+        )
+        por_categoria = cur.fetchall()
+
+        cur.execute(
+            """SELECT l.subcategoria, l.categoria, SUM(l.precio_total) AS total, COUNT(*) AS num_productos
+               FROM lineas_ticket l
+               JOIN tickets t ON l.ticket_hash = t.ticket_hash
+               WHERE t.user_id = %s
+               GROUP BY l.subcategoria, l.categoria ORDER BY total DESC""",
+            [user_id],
+        )
+        por_subcategoria = cur.fetchall()
+
+        # kpis
+        cur.execute(
+            """SELECT l.nombre_normalizado, l.precio_unitario, t.supermercado, t.fecha
+               FROM lineas_ticket l
+               JOIN tickets t ON l.ticket_hash = t.ticket_hash
+               WHERE t.user_id = %s
+               ORDER BY l.precio_unitario DESC LIMIT 1""",
+            [user_id],
+        )
+        producto_mas_caro = cur.fetchone()
+
+        cur.execute(
+            """SELECT nombre_normalizado, SUM(cantidad) AS total_cantidad,
+                      COUNT(DISTINCT l.ticket_hash) AS veces
+               FROM lineas_ticket l
+               JOIN tickets t ON l.ticket_hash = t.ticket_hash
+               WHERE t.user_id = %s
+               GROUP BY nombre_normalizado
+               ORDER BY total_cantidad DESC LIMIT 1""",
+            [user_id],
+        )
+        producto_mas_comprado = cur.fetchone()
+
+        cur.execute(
+            """SELECT nombre_normalizado, COUNT(DISTINCT l.ticket_hash) AS veces,
+                      SUM(cantidad) AS total_cantidad
+               FROM lineas_ticket l
+               JOIN tickets t ON l.ticket_hash = t.ticket_hash
+               WHERE t.user_id = %s
+               GROUP BY nombre_normalizado
+               ORDER BY veces DESC LIMIT 1""",
+            [user_id],
+        )
+        producto_mas_frecuente = cur.fetchone()
+
+        cur.execute(
+            """SELECT nombre_normalizado,
+                      MIN(precio_unitario) AS precio_min,
+                      MAX(precio_unitario) AS precio_max,
+                      MAX(precio_unitario) - MIN(precio_unitario) AS diff,
+                      COUNT(DISTINCT l.ticket_hash) AS veces
+               FROM lineas_ticket l
+               JOIN tickets t ON l.ticket_hash = t.ticket_hash
+               WHERE t.user_id = %s
+               GROUP BY nombre_normalizado
+               HAVING COUNT(DISTINCT l.ticket_hash) > 1 AND MAX(precio_unitario) > MIN(precio_unitario)
+               ORDER BY diff DESC LIMIT 1""",
+            [user_id],
+        )
+        producto_mas_variable = cur.fetchone()
+
+        cur.execute(
+            """SELECT supermercado, COUNT(*) AS veces, SUM(total_gasto) AS total
+               FROM tickets WHERE user_id = %s
+               GROUP BY supermercado ORDER BY veces DESC LIMIT 1""",
+            [user_id],
+        )
+        super_mas_visitado = cur.fetchone()
+
+        cur.execute(
+            """SELECT l.nombre_normalizado, SUM(l.precio_total) AS total_gasto,
+                      COUNT(DISTINCT l.ticket_hash) AS veces
+               FROM lineas_ticket l
+               JOIN tickets t ON l.ticket_hash = t.ticket_hash
+               WHERE t.user_id = %s
+               GROUP BY l.nombre_normalizado
+               ORDER BY total_gasto DESC LIMIT 5""",
+            [user_id],
+        )
+        top_productos = cur.fetchall()
+
+        # tickets with lineas
+        cur.execute(
+            """SELECT ticket_hash, supermercado, fecha, hora, total_gasto, created_at
+               FROM tickets WHERE user_id = %s
+               ORDER BY fecha DESC, hora DESC
+               LIMIT 100""",
+            [user_id],
+        )
+        tickets = cur.fetchall()
+        ticket_hashes = [t[0] for t in tickets]
+
+        lineas_por_ticket = {}
+        if ticket_hashes:
+            placeholders = ','.join('%s' for _ in ticket_hashes)
+            cur.execute(
+                f"""SELECT id, ticket_hash, nombre_normalizado, cantidad, precio_unitario,
+                            precio_total, categoria, subcategoria
+                     FROM lineas_ticket
+                     WHERE ticket_hash IN ({placeholders})
+                     ORDER BY categoria, subcategoria, nombre_normalizado""",
+                ticket_hashes,
+            )
+            for row in cur.fetchall():
+                h = row[1]
+                if h not in lineas_por_ticket:
+                    lineas_por_ticket[h] = []
+                lineas_por_ticket[h].append(row)
+
+        return {
+            'totals': {'resumen': resumen, 'por_mes': por_mes, 'por_anio': por_anio},
+            'categories': {'por_categoria': por_categoria, 'por_subcategoria': por_subcategoria},
+            'kpis': {
+                'producto_mas_caro': producto_mas_caro,
+                'producto_mas_comprado': producto_mas_comprado,
+                'producto_mas_frecuente': producto_mas_frecuente,
+                'producto_mas_variable': producto_mas_variable,
+                'super_mas_visitado': super_mas_visitado,
+                'top_productos': top_productos,
+            },
+            'tickets': tickets,
+            'lineas_por_ticket': lineas_por_ticket,
+        }
+    finally:
+        cur.close()
+        put_conn(conn)
+
+
 # ── Supermarket queries ─────────────────────────────────────
 
 def get_supermarkets():
